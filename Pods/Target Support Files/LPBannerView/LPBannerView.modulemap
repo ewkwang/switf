@@ -1,0 +1,6 @@
+framework module LPBannerView {
+  umbrella header "LPBannerView-umbrella.h"
+
+  export *
+  module * { export * }
+}
