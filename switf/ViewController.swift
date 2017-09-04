@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import ReachabilitySwift
+import WebKit
+let reachability = Reachability()!
 
 class ViewController: UIViewController,UIScrollViewDelegate {
     var x = CGFloat()
@@ -21,10 +24,51 @@ class ViewController: UIViewController,UIScrollViewDelegate {
        self.congitionUINav() // 调用配置导航栏
        self.congitionLunBo()
         
+        // MARK: - 定时器
         Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(timerBtn(sender:)), userInfo: nil, repeats: true)
         
+        self.NetworkStatusListener()
  }
 
+    // MARK: - 监听网络
+    func NetworkStatusListener() {
+        // 1、设置网络状态消息监听 2、获得网络Reachability对象
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged),name: ReachabilityChangedNotification,object: reachability)
+        do{
+            // 3、开启网络状态消息监听
+            try reachability.startNotifier()
+        }catch{
+            print("could not start reachability notifier")
+        }
+    }
+    
+    func reachabilityChanged(note: NSNotification) {
+         let reachability = note.object as! Reachability // 准备获取网络连接信息
+        if reachability.isReachable {
+            print("网络连接：可用")
+            if reachability.isReachableViaWiFi {
+                print("连接类型：WiFi")
+            }else{
+                print("连接类型：移动网络")
+            }
+        }else{
+            print("网络连接：不可用")
+            DispatchQueue.main.async {// 不加这句导致界面还没初始化完成就打开警告框，这样不行
+                 self.alert_noNetwrok() // 警告框，提示没有网络
+            }
+        }
+    }
+    
+    //
+    func  alert_noNetwrok(){
+        let alert = UIAlertController.init(title: "系统提示", message: "请打开网络连接", preferredStyle: UIAlertControllerStyle.alert)
+        let cancelAction = UIAlertAction.init(title: "确定", style: UIAlertActionStyle.default, handler: nil)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    
     // 定时器
     func timerBtn(sender:AnyObject) {
         // 判断如果当前页数是最后一页
@@ -153,6 +197,16 @@ class ViewController: UIViewController,UIScrollViewDelegate {
         let pageNumber = CGFloat(self.scrollerView.contentOffset.x/wid)
         self.pageControl.currentPage = Int(pageNumber)
     }
+    
+    
+    deinit {
+        reachability.stopNotifier()
+        NotificationCenter.default.removeObserver(self, name: ReachabilityChangedNotification, object: reachability)
+    }
+    
+    
+    
+    
     
     
     

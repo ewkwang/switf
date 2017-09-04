@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 // 定义宏
 let x = UIScreen.main.bounds.origin.x
 let y = UIScreen.main.bounds.origin.y
@@ -25,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window?.rootViewController = UINavigationController.init(rootViewController:TwoViewController())
+ 
+        
         return true
     }
 

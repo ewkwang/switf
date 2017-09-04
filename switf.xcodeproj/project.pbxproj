@@ -19,6 +19,7 @@
 		4D0C94A71F459F8C00D23E8D /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D0C94A41F459F8C00D23E8D /* 1.jpg */; };
 		4D0C94A81F459F8C00D23E8D /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D0C94A51F459F8C00D23E8D /* 2.jpg */; };
 		4D0C94A91F459F8C00D23E8D /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D0C94A61F459F8C00D23E8D /* 3.jpg */; };
+		4DC7E3E81F5A9F2700FCACF9 /* OCviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC7E3E71F5A9F2700FCACF9 /* OCviewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,9 @@
 		4D0C94A41F459F8C00D23E8D /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		4D0C94A51F459F8C00D23E8D /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		4D0C94A61F459F8C00D23E8D /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
+		4DC7E3E51F5A9F2700FCACF9 /* switf-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "switf-Bridging-Header.h"; sourceTree = "<group>"; };
+		4DC7E3E61F5A9F2700FCACF9 /* OCviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCviewController.h; sourceTree = "<group>"; };
+		4DC7E3E71F5A9F2700FCACF9 /* OCviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCviewController.m; sourceTree = "<group>"; };
 		78550AA4C98D49D105B21218 /* Pods-switf.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-switf.debug.xcconfig"; path = "Pods/Target Support Files/Pods-switf/Pods-switf.debug.xcconfig"; sourceTree = "<group>"; };
 		CF30D6E3C481CEA8CA780FF2 /* Pods-switf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-switf.release.xcconfig"; path = "Pods/Target Support Files/Pods-switf/Pods-switf.release.xcconfig"; sourceTree = "<group>"; };
 		DBD11B74C44591ECEF19519C /* Pods_switf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_switf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,10 +122,13 @@
 				4D0C94741F4571D900D23E8D /* AppDelegate.swift */,
 				4D0C94761F4571D900D23E8D /* ViewController.swift */,
 				4D0C94A21F4573F000D23E8D /* TwoViewController.swift */,
+				4DC7E3E61F5A9F2700FCACF9 /* OCviewController.h */,
+				4DC7E3E71F5A9F2700FCACF9 /* OCviewController.m */,
 				4D0C94781F4571D900D23E8D /* Main.storyboard */,
 				4D0C947B1F4571D900D23E8D /* Assets.xcassets */,
 				4D0C947D1F4571D900D23E8D /* LaunchScreen.storyboard */,
 				4D0C94801F4571D900D23E8D /* Info.plist */,
+				4DC7E3E51F5A9F2700FCACF9 /* switf-Bridging-Header.h */,
 			);
 			path = switf;
 			sourceTree = "<group>";
@@ -232,6 +239,7 @@
 				TargetAttributes = {
 					4D0C94701F4571D900D23E8D = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					4D0C94841F4571D900D23E8D = {
@@ -337,13 +345,17 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-switf/Pods-switf-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/LPBannerView/LPBannerView.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/ReachabilitySwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LPBannerView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReachabilitySwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -359,6 +371,7 @@
 			files = (
 				4D0C94771F4571D900D23E8D /* ViewController.swift in Sources */,
 				4D0C94751F4571D900D23E8D /* AppDelegate.swift in Sources */,
+				4DC7E3E81F5A9F2700FCACF9 /* OCviewController.m in Sources */,
 				4D0C94A31F4573F000D23E8D /* TwoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,10 +527,13 @@
 			baseConfigurationReference = 78550AA4C98D49D105B21218 /* Pods-switf.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = switf/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.switf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "switf/switf-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -527,10 +543,12 @@
 			baseConfigurationReference = CF30D6E3C481CEA8CA780FF2 /* Pods-switf.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = switf/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.switf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "switf/switf-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

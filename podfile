@@ -3,4 +3,6 @@ use_frameworks!
 
 target 'switf' do
   pod 'LPBannerView'
+  pod 'ReachabilitySwift'
+  pod 'Alamofire'
 end
